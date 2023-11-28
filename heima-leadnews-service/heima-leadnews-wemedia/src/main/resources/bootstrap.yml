@@ -1,0 +1,17 @@
+server:
+  port: 51803
+spring:
+  application:
+    name: leadnews-wemedia
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 43.143.114.98:8848
+      config:
+        server-addr: 43.143.114.98:8848
+        file-extension: yml
+niuoss:
+  endpoint: s4ntbis2r.hd-bkt.clouddn.com
+  access-key-id: APARsN0ERLmPrk92GQKS2nxDQ3QunjjvGZ_x72Ru
+  access-key-secret: KWMp49J4lE67lZmX0zWXvcHglDqnl8hFpbqnQfR_
+  bucket-name: leadnews001
