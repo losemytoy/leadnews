@@ -1,4 +1,15 @@
 package com.heima.apis;
 
-public class IArticleClient {
+import com.heima.apis.fallback.ArticleClientFallbackFactory;
+import com.heima.model.article.dtos.ArticleDto;
+import com.heima.model.common.dtos.ResponseResult;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+@FeignClient(value = "leadnews-article",fallbackFactory = ArticleClientFallbackFactory.class)
+public interface IArticleClient {
+
+    @PostMapping("/api/v1/article/save")
+    ResponseResult saveArticle(@RequestBody ArticleDto dto);
 }

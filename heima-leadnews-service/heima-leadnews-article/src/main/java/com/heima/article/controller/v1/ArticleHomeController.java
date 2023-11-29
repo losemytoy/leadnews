@@ -2,6 +2,7 @@ package com.heima.article.controller.v1;
 
 import com.heima.article.service.ApArticleService;
 import com.heima.common.constants.ArticleConstants;
+import com.heima.model.article.dtos.ArticleDto;
 import com.heima.model.article.dtos.ArticleHomeDto;
 import com.heima.model.common.dtos.ResponseResult;
 import io.swagger.annotations.Api;
@@ -50,5 +51,10 @@ public class ArticleHomeController {
     @PostMapping("/loadnew")
     public ResponseResult loadnew(@RequestBody ArticleHomeDto articleHomeDto) {
         return apArticleService.load(articleHomeDto, ArticleConstants.LOADTYPE_LOAD_NEW);
+    }
+
+    @PostMapping("/save")
+    public ResponseResult saveArticle(@RequestBody ArticleDto articleDto) {
+        return apArticleService.saveArticle(articleDto);
     }
 }
