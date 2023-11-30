@@ -6,6 +6,7 @@ import com.heima.article.mapper.ApArticleConfigMapper;
 import com.heima.article.mapper.ApArticleContentMapper;
 import com.heima.article.mapper.ApArticleMapper;
 import com.heima.article.service.ApArticleService;
+import com.heima.article.service.ArticleFreemarkerService;
 import com.heima.common.constants.ArticleConstants;
 import com.heima.model.article.dtos.ArticleDto;
 import com.heima.model.article.dtos.ArticleHomeDto;
@@ -35,6 +36,8 @@ public class ApAriticleServiceImpl extends ServiceImpl<ApArticleMapper, ApArticl
     private ApArticleConfigMapper apArticleConfigMapper;
     @Resource
     private ApArticleContentMapper apArticleContentMapper;
+    @Resource
+    private ArticleFreemarkerService articleFreemarkerService;
 
     private static final short MIN_PAGE_SIZE = 50;
     /**
@@ -100,6 +103,8 @@ public class ApAriticleServiceImpl extends ServiceImpl<ApArticleMapper, ApArticl
             apArticleContentMapper.updateById(apArticleContent);
 
         }
+
+        articleFreemarkerService.buildArticleToMinIO(apArticle, articleDto.getContent());
 
         return ResponseResult.okResult(apArticle.getId());
     }
